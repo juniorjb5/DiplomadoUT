@@ -1,0 +1,4030 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>An Introduction to R Markdown</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Orlando Joaqui-Barandica" />
+    <meta name="date" content="2021-09-10" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/my-theme.css" type="text/css" />
+    <link rel="stylesheet" href="assets/css/my-fonts.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+
+
+
+
+class: title-slide, right, top
+
+
+# An Introduction to R Markdown
+
+## Orlando Joaqui-Barandica
+
+#### &lt;www.joaquibarandica.com&gt;
+
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+
+*Esta presentación es recopilación del material de Presmanes, A.*
+
+---
+
+class: inverse, middle, center
+
+&lt;img style="border-radius: 50%;" src="images/logo.png"
+width="150px"
+/&gt;
+
+# Universidad del Tolima
+
+--
+
+## Diplomado en gestión de datos
+
+---
+class: inverse, middle, center
+
+# What is R Markdown?
+
+---
+
+# What is R Markdown?
+
+--
+
+1. An authoring framework for data science.
+
+--
+
+1. A document format (`.Rmd`).
+
+--
+
+1. An R package named `rmarkdown`.
+
+--
+
+1. A file format for making dynamic documents with R. 
+
+--
+
+1. A tool for integrating prose, code, and results.
+
+--
+
+1. A computational document.
+
+--
+
+1. Wizardry.
+
+---
+
+
+# What is R Markdown?
+
+1. ["An authoring framework for data science."](https://rmarkdown.rstudio.com/lesson-1.html) (✔️)
+
+1. [A document format (`.Rmd`).](https://bookdown.org/yihui/rmarkdown/) (✔️)
+
+1. [An R package named `rmarkdown`.](https://rmarkdown.rstudio.com/docs/) (✔️)
+
+1. ["A file format for making dynamic documents with R."](https://rmarkdown.rstudio.com/articles_intro.html) (✔️)
+
+1. ["A tool for integrating text, code, and results."](https://r4ds.had.co.nz/communicate-intro.html) (✔️)
+
+1. ["A computational document."](http://radar.oreilly.com/2011/07/wolframs-computational-documen.html) (✔️)
+
+1. Wizardry. (🧙‍♂️)
+
+
+---
+background-image: url(images/rmarkdown_wizards.png)
+background-size: contain
+
+.footnote[Art by [Allison Horst](https://twitter.com/allison_horst?lang=en)]
+
+---
+class: inverse, middle, center
+
+# Why R Markdown?
+
+---
+class: center
+background-image: url(https://media.giphy.com/media/11fDMHAzihB8D6/source.gif)
+
+# Reproducibility crisis? 
+
+???
+
+We are not here today to solve science or medicine's reproducibility crisis.
+
+What I do think R Markdown can help you with today when you leave here is to tackle two other crises: one I think of as the confidence crisis...
+
+---
+class: center
+background-image: url(https://media.giphy.com/media/OPZZ6KWJOZ3AA/source.gif)
+
+# Confidence crisis
+
+---
+
+class: center
+background-image: url(images/remote-crisis.jpg)
+background-size: cover
+
+# 🚨 Current crisis 🚨
+
+---
+class: middle, center
+
+# Change your mental model
+
+.pull-left[
+
+### Source &amp;harr; output
+
+&lt;img src="images/word.png" width="50%" /&gt;
+
+]
+
+.pull-right[
+
+### Source &amp;rarr; output
+
+&lt;img src="images/rmd-file.png" width="50%" /&gt;
+
+]
+
+---
+class: middle, center
+
+# Change your mental model
+
+.pull-left[
+
+### Source &amp;harr; output
+
+&lt;img src="images/haba-elise.jpg" width="50%" /&gt;
+
+]
+
+.pull-right[
+
+### Source &amp;rarr; output
+
+&lt;img src="images/doll.png" width="50%" /&gt;
+
+]
+
+---
+background-image: url(images/welliewishers/Slide1.png)
+background-size: cover
+class: top, center
+
+.footnote[https://www.americangirl.com/shop/c/welliewishers]
+
+---
+background-image: url(images/welliewishers/Slide2.png)
+background-size: cover
+class: top, center
+
+.footnote[https://www.americangirl.com/shop/c/welliewishers]
+
+---
+class: middle, inverse, center
+
+# Same ~~doll~~ source
+
+--
+
+# Different ~~outfits~~ outputs
+
+---
+class: middle, center
+
+# `html_document`
+
+&lt;img src="images/doll.png" width="40%" /&gt;
+
+
+---
+class: middle, center
+
+# What is inside?
+
+![](images/doc-make.jpg)
+
+
+
+
+---
+name: card0
+background-image: url(images/card0.png)
+background-size: contain
+
+.footnote[https://www.dear-data.com/]
+
+---
+name: card1
+background-image: url(images/card1.png)
+background-size: contain
+
+.footnote[https://www.dear-data.com/]
+
+
+---
+
+# metadata: YAML
+
+.pull-left[
+
+_"YAML Ain't Markup Language"_
+
+
+```yaml
+---
+key: value
+---
+```
+
+]
+
+.pull-right[
+
+&lt;img src="images/orchestra.jpg" width="75%" style="display: block; margin: auto;" /&gt;
+
+]
+
+---
+class: middle, center
+
+# Output options
+
+---
+
+# Save output options in your YAML
+
+.pull-left[
+
+```yaml
+---
+author: Your name here
+title: Your title here
+output: html_document
+---
+```
+
+```yaml
+---
+author: Your name here
+title: Your title here
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    theme: flatly
+---
+```
+
+
+]
+
+.pull-right[
+
+&lt;img src="images/orchestra.jpg" width="75%" style="display: block; margin: auto;" /&gt;
+
+]
+
+---
+background-image: url(images/Single-rmd.png)
+background-size: contain
+
+---
+background-image: url(images/Single-rmd1.png)
+background-size: contain
+
+---
+background-image: url(images/Single-rmd2.png)
+background-size: contain
+
+---
+background-image: url(images/Single-rmd3.png)
+background-size: contain
+
+---
+class: top center
+
+&lt;video width="1530" height="610" controls&gt;
+    &lt;source src="images/single-doc-knit.mp4" type="video/mp4"&gt; &lt;/video&gt;
+
+---
+class: middle center
+background-image: url(images/Single-knit1.png)
+background-size: contain
+
+???
+
+Here is what we knit. 
+
+--
+
+&lt;img src="images/Single-knit2.png" style="
+  position: absolute; 
+  width: 91%; 
+  top: -53px;
+  right: 5px;
+"&gt;
+
+???
+
+Using the `THEME:` key in our YAML, we changed our font and colors.
+
+--
+
+&lt;img src="images/Single-knit3.png" style="
+  position: absolute; 
+  width: 97%; 
+  top: -45px;
+  right: -51px;
+"&gt;
+
+???
+
+And we have this nice table of contents floating off to the side...
+
+---
+class: middle
+
+# Check-in
+
+.pull-left[
+How do you use only the **default** output options?
+
+(a)
+```yaml
+---
+output: html_document()
+---
+```
+(b)
+```yaml
+---
+output: html_document
+---
+```
+
+]
+
+--
+
+.pull-right[
+How do you add an output **option** to a format in your YAML?
+
+(a)
+```yaml
+---
+output: 
+  html_document: 
+    toc: true
+---
+```
+
+(b)
+```yaml
+---
+output: 
+  html_document(toc=true)
+---
+```
+
+]
+
+---
+class: middle, center
+
+# Output formats
+
+
+
+
+---
+class: middle, center
+
+
+&lt;a href="https://rmarkdown.rstudio.com/docs/reference/index.html#section-output-formats" target="_blank"&gt;&lt;img src="images/rmdbase-formats.png" width="40%" /&gt;&lt;/a&gt;
+
+https://rmarkdown.rstudio.com/docs/reference/index.html#section-output-formats
+
+---
+
+# 🧶 Knit
+
+.pull-left[
+&lt;img src="images/knit-dropdown.png" width="60%" style="display: block; margin: auto;" /&gt;
+
+]
+
+.pull-right[
+
+```yaml
+---
+author: Your name here
+title: Your title here
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    theme: flatly
+  word_document: default
+  pdf_document: default
+---
+```
+]
+
+???
+
+This is a great way to "control" your knit button!
+
+Notice that when you knit, it respects those output options in your YAML.
+
+This way you "save" your output options
+
+
+
+---
+class: middle
+
+# Check-in
+
+.pull-left[
+How do you add another output **format** to your YAML?
+
+(a)
+```yaml
+---
+output: 
+  html_document: default
+  word_document: default
+---
+```
+(b)
+```
+---
+output: 
+  html_document()
+  word_document()
+---
+```
+
+]
+
+--
+
+
+.pull-right[
+How do you now add output **options** to your YAML?
+
+(a)
+```yaml
+---
+output: 
+  html_document: 
+    toc: true
+  word_document: default
+---
+```
+(b)
+```
+---
+output: 
+  html_document(toc=true)
+  word_document(default)
+---
+```
+
+]
+
+---
+class: middle, center
+# Built-in output formats
+
+
+&lt;img src="https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/rmarkdown.png" width="32%" /&gt;
+
+---
+class: middle, center
+
+&lt;img src="images/outputs.png" width="50%" /&gt;
+
+???
+
+Built in formats (in the `rmarkdown` package)
+
+versus
+
+extensions (different packages that extend output formats available to you)
+
+---
+class: middle, center
+
+# Extension output formats
+
+
+&lt;img src="https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/flexdashboard.png" width="32%" /&gt;&lt;img src="https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/bookdown.png" width="32%" /&gt;&lt;img src="https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/xaringan.png" width="32%" /&gt;
+
+---
+class: middle, left
+
+&lt;iframe src="https://rstudio.github.io/distill/" width="100%" height="400px"&gt;&lt;/iframe&gt;
+
+
+---
+class: middle
+
+.center[
+# Use an extension package
+]
+
+
+.pull-left[
+```yaml
+---
+author: Your name here
+title: Your title here
+output:
+  distill::distill_article: default
+  bookdown::html_document2: default
+---
+```
+]
+
+.pull-right[
+```yaml
+---
+author: Your name here
+title: Your title here
+output:
+  distill::distill_article:
+    toc: true
+  bookdown::html_document2:
+    toc: true
+    theme: flatly
+    toc_float: true
+---
+```
+]
+
+
+
+---
+template: card0
+
+---
+template: card1
+
+---
+name: card2
+background-image: url(images/card2.png)
+background-size: contain
+
+.footnote[https://www.dear-data.com/]
+
+---
+class: center, middle
+
+# Do this! 👇
+
+# https://commonmark.org/help/tutorial/
+
+---
+
+# &lt;center&gt;Headers&lt;/center&gt;
+
+--
+
+.pull-left[
+```markdown
+# HEADER 1
+
+## HEADER 2
+
+### HEADER 3
+
+#### HEADER 4
+
+##### HEADER 5
+
+###### HEADER 6
+```
+]
+
+--
+
+.pull-right[
+# HEADER 1
+
+## HEADER 2
+
+### HEADER 3
+
+#### HEADER 4
+
+##### HEADER 5
+
+###### HEADER 6
+]
+
+---
+
+![](images/rmd-nav.png)
+
+---
+
+# &lt;center&gt;Text&lt;/center&gt;
+
+--
+
+.pull-left[
+```markdown
+Childhood **vaccines**  
+are one of the  
+_great triumphs_  
+of modern medicine. 
+```
+]
+
+--
+
+.pull-right[
+
+Childhood **vaccines**  
+are one of the  
+_great triumphs_  
+of modern medicine. 
+
+]
+
+---
+class: top
+
+# &lt;center&gt;Lists&lt;/center&gt;
+
+--
+
+.pull-left[
+
+```markdown
+Indeed, parents whose children are  
+vaccinated no longer have to worry about  
+their child's death or disability from:
+
+- whooping cough, 
+- polio, 
+- diphtheria, 
+- hepatitis, or 
+- a host of other infections.
+
+Vaccines are the most cost-effective health  
+care interventions there are. We have   
+three new, extremely effective vaccines to  
+roll out in developing countries:  
+
+1. pneumonia
+1. rotavirus
+1. meningitis A
+```
+
+]
+
+--
+
+.pull-right[
+
+Indeed, parents whose children are  
+vaccinated no longer have to worry about  
+their child's death or disability from:
+
+- whooping cough, 
+- polio, 
+- diphtheria, 
+- hepatitis, or 
+- a host of other infections.
+
+Vaccines are the most cost-effective health  
+care interventions there are. We have  
+three new, extremely effective vaccines to  
+roll out in developing countries:
+
+1. pneumonia
+1. rotavirus
+1. meningitis A
+
+]
+
+---
+
+# &lt;center&gt;Images&lt;/center&gt;
+
+--
+
+.pull-left[
+```markdown
+Receiving rubella vaccination, Brazil, 2008.
+![](http://bit.ly/VaccineBySandraRugio)
+```
+]
+
+--
+
+.pull-right[
+Receiving rubella vaccination, Brazil, 2008.
+![](http://bit.ly/VaccineBySandraRugio)
+]
+
+---
+
+# &lt;center&gt;Links&lt;/center&gt;
+
+--
+
+.pull-left[
+```markdown
+[Photo](https://en.wikipedia.org/wiki/Vaccine)
+
+Receiving rubella vaccination, Brazil, 2008.
+![](http://bit.ly/VaccineBySandraRugio)
+```
+]
+
+--
+
+.pull-right[
+[Photo](https://en.wikipedia.org/wiki/Vaccine)
+
+Receiving rubella vaccination, Brazil, 2008.
+![](http://bit.ly/VaccineBySandraRugio)
+]
+
+---
+name: 03-formative
+class: middle
+
+# Check-in
+
+--
+
+.pull-left[
+
+How do you add headers in Markdown?
+
+`! Header`
+
+`- Header`
+
+`# Header`
+
+`1. Header`
+
+]
+
+--
+
+.pull-right[
+
+What about lists? Bulleted? Numbered?
+
+`! Item 1`
+
+`- Item 1`
+
+`# Item 1`
+
+`1. Item 1`
+
+]
+
+---
+template: card0
+
+---
+template: card1
+
+---
+template: card2
+
+---
+name: card3
+background-image: url(images/card3.png)
+background-size: contain
+
+---
+class: middle, center, inverse
+
+# `code` -&gt; plots
+---
+
+# Code chunks
+
+.pull-left[
+
+````
+```{r}
+mockdata %&gt;% 
+  distinct(arm)
+```
+````
+
+What is the fate of this chunk?
+
+]
+
+--
+
+.pull-right[
+
+
+```r
+mockdata %&gt;% 
+  distinct(arm)
+#&gt; # A tibble: 3 x 1
+#&gt;   arm      
+#&gt;   &lt;chr&gt;    
+#&gt; 1 A: IFL   
+#&gt; 2 F: FOLFOX
+#&gt; 3 G: IROX
+```
+
+]
+
+---
+
+# Code chunks
+
+
+.pull-left[
+
+````
+```{r}
+n_sites &lt;- n_distinct(mockdata$site)
+```
+````
+
+What fate do you predict here?
+
+]
+
+--
+
+.pull-right[
+
+
+```r
+n_sites &lt;- n_distinct(mockdata$site)
+```
+
+  
+]
+
+---
+
+# Code chunks
+
+
+.pull-left[
+
+````
+```{r}
+n_sites &lt;- n_distinct(mockdata$site)
+n_sites
+```
+````
+
+]
+
+--
+
+.pull-right[
+
+
+```r
+n_sites &lt;- n_distinct(mockdata$site)
+n_sites
+#&gt; [1] 1
+```
+
+  
+]
+
+
+---
+
+
+
+
+
+
+# Including plots
+
+.pull-left[
+
+```r
+# PLOT: Age distribution -------------------------------------------------------
+ggplot(mockdata, aes(age)) +
+  geom_histogram(color = 'white',
+                 fill = scico(1, 
+                              begin = .3, 
+                              palette = "berlin"),
+                 bins = 20) +
+  labs(x = "Age", 
+       y = "Count") +
+  scale_y_continuous(
+    breaks = scales::pretty_breaks()
+  )
+```
+
+Will this print?
+
+]
+
+--
+
+.pull-right[
+&lt;img src="index_files/figure-html/unnamed-chunk-23-1.png" width="504" /&gt;
+
+]
+
+---
+
+# Including plots
+
+.pull-left[
+
+```r
+# PLOT: Age distribution -------------------------------------------------------
+age_histogram &lt;- 
+  ggplot(mockdata, aes(age)) +
+  geom_histogram(color = 'white',
+                 fill = scico(1, 
+                              begin = .3, 
+                              palette = "berlin"),
+                 bins = 20) +
+  labs(x = "Age", 
+       y = "Count") +
+  scale_y_continuous(
+    breaks = scales::pretty_breaks()
+  )
+```
+
+What about this?
+
+]
+
+--
+
+.pull-right[
+
+
+]
+
+
+---
+
+# Including plots
+
+.pull-left[
+
+```r
+# PLOT: Age distribution -------------------------------------------------------
+age_histogram &lt;- 
+  ggplot(mockdata, aes(age)) +
+  geom_histogram(color = 'white',
+                 fill = scico(1, 
+                              begin = .3, 
+                              palette = "berlin"),
+                 bins = 20) +
+  labs(x = "Age", 
+       y = "Count") +
+  scale_y_continuous(
+    breaks = scales::pretty_breaks()
+  )
+age_histogram
+```
+
+]
+
+--
+
+.pull-right[
+&lt;img src="index_files/figure-html/unnamed-chunk-25-1.png" width="504" /&gt;
+
+]
+
+???
+
+
+so, how did we get a figure into R Markdown?
+
+Answer: it has to print!
+
+---
+
+# Chunk options for plots
+
+- fig resolution
+- fig size
+- [fig "device"](https://r4ds.had.co.nz/graphics-for-communication.html#other-important-options)
+
+.footnote[https://yihui.name/knitr/options/#plots]
+
+---
+
+# out.width
+
+.pull-left[
+
+````
+```{r out.width="70%"}
+age_histogram
+```
+````
+
+&lt;img src="index_files/figure-html/unnamed-chunk-26-1.png" width="70%" /&gt;
+]
+
+--
+
+.pull-right[
+
+````
+```{r out.width="10%"}
+age_histogram
+```
+````
+
+&lt;img src="index_files/figure-html/unnamed-chunk-27-1.png" width="10%" /&gt;
+
+See also:
+
++ `fig.width`
++ `fig.height` 
++ `fig.asp`
+
+https://r4ds.had.co.nz/graphics-for-communication.html#figure-sizing
+
+]
+
+---
+
+# fig.path
+
+````
+```{r fig.path="figs/", echo=FALSE}
+ae_pct_plot
+```
+````
+
+&lt;img src="index_files/figure-html/unnamed-chunk-28-1.png" width="70%" /&gt;
+
+---
+
+# fig.path
+
+````
+```{r ae-plot, fig.path="figs/", echo=FALSE}
+ae_pct_plot
+```
+````
+
+&lt;img src="index_files/figure-html/ae-plot-1.png" width="70%" /&gt;
+
+---
+
+# Chunk labels
+
+.pull-left[
+
+````
+```{r peek}
+glimpse(mockdata)
+```
+````
+
+]
+
+.pull-right[
+
++ Place between curly braces&lt;br&gt;`{r label}`
+
++ Separated options with commas&lt;br&gt;`{r label, option1=value}`
+
++ Careful! No duplicate chunk labels
+
+    ````
+    ```{r peek}
+    head(mockdata)
+    ```
+    ````
+
+    ```
+    Error in parse_block(g[-1], g[1], params.src) : 
+      duplicate label 'peek'
+    Calls: &lt;Anonymous&gt; ... process_file -&gt; split_file -&gt; lapply -&gt; FUN -&gt; parse_block
+    Execution halted
+    ```
+
+]
+
+???
+
+how can we make it easier on ourselves to explore the code in here?
+
+show how to add chunk labels and view in IDE interactively
+
+---
+class: top, center
+background-image: url(images/plants.jpg)
+background-size: 70%
+background-color: #fff5ec
+
+# Chunks as crops or houseplants?
+
+.footnote[https://masalmon.eu/2017/08/08/chunkpets/]
+
+---
+class: middle, center
+
+# A good chunk label
+
+.pull-left[
+
+### Good
+
+`my-plot`
+
+`myplot`
+
+`myplot1`
+
+`myplot-1`
+
+`MY-PLOT`
+
+]
+
+.pull-right[
+
+### Bad
+
+`my_plot`
+
+`my plot`
+
+everything else!
+
+]
+
+---
+class: middle, center
+
+# A good chunk label
+
+Think: kebabs, not snakes
+
+
+---
+background-image: url(images/pour.jpg)
+background-position: left
+background-size: contain
+class: middle, center
+
+.pull-right[
+![](images/figs-label.png)
+]
+
+---
+
+# fig.cap
+
+````
+```{r age-plot, echo=FALSE, fig.cap='Age distributions'}
+age_histogram
+```
+````
+
+.center[
+
+&lt;img src="index_files/figure-html/age-plot-1.png" width="25%" /&gt;
+
+**Fig. 1:** Age distributions
+
+]
+
+
+
+---
+
+# Cross-reference a figure
+
+.pull-left[
+
+See Figure `\@ref(fig:age-plot)`.
+
+````
+```{r age-plot, echo=FALSE, fig.cap='Age distributions'}
+age_histogram
+```
+````
+
+]
+
+.pull-right[
+
+See Figure [1]().
+
+.center[
+
+&lt;div class="figure"&gt;
+&lt;img src="index_files/figure-html/unnamed-chunk-29-1.png" alt="Age distributions" width="70%" /&gt;
+&lt;p class="caption"&gt;Age distributions&lt;/p&gt;
+&lt;/div&gt;
+
+]
+
+]
+
+.footnote[Cross-referencing only works in these output packages: distill, bookdown, blogdown]
+
+---
+
+# Key takeaway
+
+Once you have:
+
+✔️ A labeled chunk that produces a plot
+
+✔️ A figure caption using `fig.cap`
+
+Then you can have:
+
+### Cross-references!*
+
+.footnote[\* and you are using distill, bookdown, or blogdown output formats]
+
+
+---
+
+# message / warning
+
+
+
+![](https://www.tidyverse.org/images/tidyverse_1.2.0/tidyverse_1-2-0_pkg_load.gif)
+
+
+
+---
+
+# message / warning
+
+.pull-left[
+
+````
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+```
+````
+
+]
+
+.pull-right[
+
+
+```r
+library(tidyverse)
+```
+
+]
+
+---
+
+# Other useful chunk options
+
+.pull-left[
+
+````
+```{r}
+glimpse(mockdata)
+```
+````
+
+]
+
+.pull-right[
+
+
+```r
+glimpse(mockdata)
+#&gt; Rows: 1,499
+#&gt; Columns: 26
+#&gt; $ case          &lt;dbl&gt; 110754, 99706, 105271, 105001, 112263, 86205, 99508, 901~
+#&gt; $ age           &lt;dbl&gt; 67, 74, 50, 71, 69, 56, 50, 57, 51, 63, 61, 59, 61, 59, ~
+#&gt; $ arm           &lt;chr&gt; "F: FOLFOX", "A: IFL", "A: IFL", "G: IROX", "F: FOLFOX",~
+#&gt; $ sex           &lt;chr&gt; "Male", "Female", "Female", "Female", "Female", "Male", ~
+#&gt; $ race          &lt;chr&gt; "Caucasian", "Caucasian", "Caucasian", "Caucasian", "Oth~
+#&gt; $ fu_time       &lt;dbl&gt; 922, 270, 175, 128, 233, 120, 369, 421, 387, 363, 168, 1~
+#&gt; $ fu_stat       &lt;dbl&gt; 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2,~
+#&gt; $ ps            &lt;dbl&gt; 0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 1, 1, 0,~
+#&gt; $ hgb           &lt;dbl&gt; 11.5, 10.7, 11.1, 12.6, 13.0, 10.2, 13.3, 12.1, 13.8, 12~
+#&gt; $ bmi           &lt;dbl&gt; 25.09861, 19.49786, NA, 29.42922, 26.35352, 19.03673, 24~
+#&gt; $ alk_phos      &lt;dbl&gt; 160, 290, 700, 771, 350, 569, 162, 152, 231, 492, 740, 2~
+#&gt; $ ast           &lt;dbl&gt; 35, 52, 100, 68, 35, 27, 16, 12, 25, 18, 45, 16, 50, 80,~
+#&gt; $ mdquality_s   &lt;dbl&gt; NA, 1, 1, 1, NA, 1, 1, 1, 1, 1, NA, NA, 1, 0, 1, 1, 0, N~
+#&gt; $ age_ord       &lt;chr&gt; "60-69", "70-79", "40-49", "70-79", "60-69", "50-59", "4~
+#&gt; $ site          &lt;chr&gt; "Portland", "Portland", "Portland", "Portland", "Portlan~
+#&gt; $ country       &lt;chr&gt; "USA", "USA", "USA", "USA", "USA", "USA", "USA", "USA", ~
+#&gt; $ ethnicity     &lt;chr&gt; "White (not Hispanic)", "White (not Hispanic)", "White (~
+#&gt; $ name          &lt;chr&gt; "Barrett Wafford", "Shelby Moore", "Farrah Morgan", "Bri~
+#&gt; $ first_name    &lt;chr&gt; "Barrett", "Shelby", "Farrah", "Brianna", "Kareema", "Ja~
+#&gt; $ last_name     &lt;chr&gt; "Wafford", "Moore", "Morgan", "Rasico", "el-Saleh", "Pin~
+#&gt; $ ae_low_wbc    &lt;fct&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,~
+#&gt; $ ae_neuropathy &lt;fct&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,~
+#&gt; $ ae_diarrhea   &lt;fct&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0,~
+#&gt; $ ae_vomiting   &lt;fct&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0,~
+#&gt; $ ae_blood_clot &lt;fct&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,~
+#&gt; $ fu_fct        &lt;fct&gt; Died, Died, Died, Died, Died, Died, Died, Died, Died, Di~
+```
+
+]
+
+---
+
+# echo
+
+.pull-left[
+
+````
+```{r echo=FALSE}
+glimpse(mockdata)
+```
+````
+
+]
+
+.pull-right[
+
+
+```
+#&gt; Rows: 1,499
+#&gt; Columns: 26
+#&gt; $ case          &lt;dbl&gt; 110754, 99706, 105271, 105001, 112263, 86205, 99508, 901~
+#&gt; $ age           &lt;dbl&gt; 67, 74, 50, 71, 69, 56, 50, 57, 51, 63, 61, 59, 61, 59, ~
+#&gt; $ arm           &lt;chr&gt; "F: FOLFOX", "A: IFL", "A: IFL", "G: IROX", "F: FOLFOX",~
+#&gt; $ sex           &lt;chr&gt; "Male", "Female", "Female", "Female", "Female", "Male", ~
+#&gt; $ race          &lt;chr&gt; "Caucasian", "Caucasian", "Caucasian", "Caucasian", "Oth~
+#&gt; $ fu_time       &lt;dbl&gt; 922, 270, 175, 128, 233, 120, 369, 421, 387, 363, 168, 1~
+#&gt; $ fu_stat       &lt;dbl&gt; 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2,~
+#&gt; $ ps            &lt;dbl&gt; 0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 1, 1, 0,~
+#&gt; $ hgb           &lt;dbl&gt; 11.5, 10.7, 11.1, 12.6, 13.0, 10.2, 13.3, 12.1, 13.8, 12~
+#&gt; $ bmi           &lt;dbl&gt; 25.09861, 19.49786, NA, 29.42922, 26.35352, 19.03673, 24~
+#&gt; $ alk_phos      &lt;dbl&gt; 160, 290, 700, 771, 350, 569, 162, 152, 231, 492, 740, 2~
+#&gt; $ ast           &lt;dbl&gt; 35, 52, 100, 68, 35, 27, 16, 12, 25, 18, 45, 16, 50, 80,~
+#&gt; $ mdquality_s   &lt;dbl&gt; NA, 1, 1, 1, NA, 1, 1, 1, 1, 1, NA, NA, 1, 0, 1, 1, 0, N~
+#&gt; $ age_ord       &lt;chr&gt; "60-69", "70-79", "40-49", "70-79", "60-69", "50-59", "4~
+#&gt; $ site          &lt;chr&gt; "Portland", "Portland", "Portland", "Portland", "Portlan~
+#&gt; $ country       &lt;chr&gt; "USA", "USA", "USA", "USA", "USA", "USA", "USA", "USA", ~
+#&gt; $ ethnicity     &lt;chr&gt; "White (not Hispanic)", "White (not Hispanic)", "White (~
+#&gt; $ name          &lt;chr&gt; "Barrett Wafford", "Shelby Moore", "Farrah Morgan", "Bri~
+#&gt; $ first_name    &lt;chr&gt; "Barrett", "Shelby", "Farrah", "Brianna", "Kareema", "Ja~
+#&gt; $ last_name     &lt;chr&gt; "Wafford", "Moore", "Morgan", "Rasico", "el-Saleh", "Pin~
+#&gt; $ ae_low_wbc    &lt;fct&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,~
+#&gt; $ ae_neuropathy &lt;fct&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,~
+#&gt; $ ae_diarrhea   &lt;fct&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0,~
+#&gt; $ ae_vomiting   &lt;fct&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0,~
+#&gt; $ ae_blood_clot &lt;fct&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,~
+#&gt; $ fu_fct        &lt;fct&gt; Died, Died, Died, Died, Died, Died, Died, Died, Died, Di~
+```
+
+]
+
+---
+
+# eval
+
+.pull-left[
+
+````
+```{r eval=FALSE}
+glimpse(mockdata)
+```
+````
+
+]
+
+.pull-right[
+
+
+```r
+glimpse(mockdata)
+```
+
+]
+
+---
+
+# include
+
+.pull-left[
+
+````
+```{r include=FALSE}
+glimpse(mockdata)
+```
+````
+
+]
+
+.pull-right[
+
+
+
+]
+
+---
+
+# Using chunk options
+
+.pull-left[
+
+````
+```{r echo=TRUE, results='hide'}
+glimpse(mockdata)
+```
+````
+
+]
+
+.pull-right[
+
+
+```r
+glimpse(mockdata)
+```
+
+]
+
++ Place between curly braces&lt;br&gt;`{r option=value}`
+
++ Multiple options separated by commas&lt;br&gt;`{r option1=value, option2=value}`
+
++ Careful! The `r` part is the **code engine** (other engines possible)
+
+---
+
+# A global `setup` chunk 🌍
+
+One chunk to rule them all
+
+.pull-left[
+
+````
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  warning = FALSE,
+  message = FALSE,
+  echo = FALSE,
+  fig.path = "alison-figs/"
+)
+```
+````
+
+]
+
+.pull-right[
+
++ A special chunk label: `setup`
+
++ Typically the first chunk
+
++ All following chunks will use these options (i.e., sets global chunk options)
+
++ **Tip**: set `include=FALSE`
+
++ You can (and should) use individual chunk options too
+
+]
+
+
+---
+
+.left-column[
+# Default options
+]
+
+.right-column[
+
+```r
+str(knitr::opts_chunk$get())
+#&gt; List of 53
+#&gt;  $ eval         : logi TRUE
+#&gt;  $ echo         : logi TRUE
+#&gt;  $ results      : chr "markup"
+#&gt;  $ tidy         : logi FALSE
+#&gt;  $ tidy.opts    : NULL
+#&gt;  $ collapse     : logi TRUE
+#&gt;  $ prompt       : logi FALSE
+#&gt;  $ comment      : chr "#&gt;"
+#&gt;  $ highlight    : logi TRUE
+#&gt;  $ strip.white  : logi TRUE
+#&gt;  $ size         : chr "normalsize"
+#&gt;  $ background   : chr "#F7F7F7"
+#&gt;  $ cache        : logi FALSE
+#&gt;  $ cache.path   : chr "index_cache/html/"
+#&gt;  $ cache.vars   : NULL
+#&gt;  $ cache.lazy   : logi TRUE
+#&gt;  $ dependson    : NULL
+#&gt;  $ autodep      : logi FALSE
+#&gt;  $ cache.rebuild: logi FALSE
+#&gt;  $ fig.keep     : chr "high"
+#&gt;  $ fig.show     : chr "asis"
+#&gt;  $ fig.align    : chr "default"
+#&gt;  $ fig.path     : chr "index_files/figure-html/"
+#&gt;  $ dev          : chr "png"
+#&gt;  $ dev.args     : NULL
+#&gt;  $ dpi          : num 72
+#&gt;  $ fig.ext      : NULL
+#&gt;  $ fig.width    : num 7
+#&gt;  $ fig.height   : num 7
+#&gt;  $ fig.env      : chr "figure"
+#&gt;  $ fig.cap      : NULL
+#&gt;  $ fig.scap     : NULL
+#&gt;  $ fig.lp       : chr "fig:"
+#&gt;  $ fig.subcap   : NULL
+#&gt;  $ fig.pos      : chr ""
+#&gt;  $ out.width    : NULL
+#&gt;  $ out.height   : NULL
+#&gt;  $ out.extra    : NULL
+#&gt;  $ fig.retina   : num 1
+#&gt;  $ external     : logi TRUE
+#&gt;  $ sanitize     : logi FALSE
+#&gt;  $ interval     : num 1
+#&gt;  $ aniopts      : chr "controls,loop"
+#&gt;  $ warning      : logi TRUE
+#&gt;  $ error        : logi FALSE
+#&gt;  $ message      : logi TRUE
+#&gt;  $ render       : NULL
+#&gt;  $ ref.label    : NULL
+#&gt;  $ child        : NULL
+#&gt;  $ engine       : chr "R"
+#&gt;  $ split        : logi FALSE
+#&gt;  $ include      : logi TRUE
+#&gt;  $ purl         : logi TRUE
+```
+
+]
+
+
+---
+template: card0
+
+---
+template: card1
+
+---
+template: card2
+
+---
+template: card3
+
+---
+background-image: url(images/card4.png)
+background-size: contain
+
+
+
+
+
+
+---
+class: center
+background-image: url(images/typewriter.jpg)
+background-size: contain
+background-color: #f6f6f6
+
+# Markdown tables
+
+---
+class: center
+
+# Markdown tables
+
+.pull-left[
+
+```markdown
+| Time          | Session | Topic    |
+|:--------------|:-------:|---------:|
+| _left_        | _center_| _right_  |
+| 01:00 - 01:50 | 1       | Anatomy  |
+| 01:50 - 02:00 |         | *Break*  |
+| 02:00 - 02:45 | 2       | Tables   |
+| 02:45 - 03:00 |         | *Break*  |
+
+```
+]
+
+--
+
+.pull-right[
+
+| Time          | Session | Topic    |
+|:--------------|:-------:|---------:|
+| _left_        | _center_| _right_  |
+| 01:00 - 01:50 | 1       | Anatomy  |
+| 01:50 - 02:00 |         | *Break*  |
+| 02:00 - 02:45 | 2       | Tables   |
+| 02:45 - 03:00 |         | *Break*  |
+
+]
+
+---
+class: middle, center, inverse
+
+# Tables
+
+![](https://media.giphy.com/media/i9c6lFmOSXKZW/giphy.gif)
+
+---
+class: center, middle
+
+# Two table types
+
+
+.pull-left[
+
+### for you
+
+&lt;img src="images/tables-you.jpg" width="3691" /&gt;
+
+
+]
+
+--
+
+.pull-right[
+
+### for everyone else
+
+&lt;img src="images/tables-them.jpg" width="3691" /&gt;
+]
+
+---
+
+
+# Let's try using data now
+
+
+```r
+mockdata &lt;- read_csv(here::here("mockpaper/data/mockdata.csv")) %&gt;%
+  mutate(fu_fct = fct_recode(as.factor(fu_stat), 
+                             "Lived" = "1", 
+                             "Died" = "2")) %&gt;% 
+  mutate_at(vars(starts_with("ae_")), ~as.factor(.))
+#&gt; 
+#&gt; -- Column specification --------------------------------------------------------
+#&gt; cols(
+#&gt;   .default = col_double(),
+#&gt;   arm = col_character(),
+#&gt;   sex = col_character(),
+#&gt;   race = col_character(),
+#&gt;   age_ord = col_character(),
+#&gt;   site = col_character(),
+#&gt;   country = col_character(),
+#&gt;   ethnicity = col_character(),
+#&gt;   name = col_character(),
+#&gt;   first_name = col_character(),
+#&gt;   last_name = col_character()
+#&gt; )
+#&gt; i Use `spec()` for the full column specifications.
+```
+
+---
+class: middle
+
+.left-column[
+
+![](https://raw.githubusercontent.com/sfirke/janitor/master/man/figures/logo_small.png)
+]
+
+.right-column[
+# the janitor package
+
+&lt;http://sfirke.github.io/janitor/&gt;
+]
+
+---
+
+# 1-way frequency `tabyl()`
+
+
+.pull-left[
+
+
+```r
+mockdata %&gt;% 
+  tabyl(arm)
+#&gt;        arm   n   percent
+#&gt;     A: IFL 428 0.2855237
+#&gt;  F: FOLFOX 691 0.4609740
+#&gt;    G: IROX 380 0.2535023
+```
+
+] 
+
+--
+
+.pull-right[
+
+
+```r
+mockdata %&gt;% 
+  tabyl(arm) %&gt;% 
+  adorn_totals("row") %&gt;%
+  adorn_pct_formatting()
+#&gt;        arm    n percent
+#&gt;     A: IFL  428   28.6%
+#&gt;  F: FOLFOX  691   46.1%
+#&gt;    G: IROX  380   25.4%
+#&gt;      Total 1499  100.0%
+```
+
+]
+
+---
+
+# 2-way frequency `tabyl()`
+
+
+.pull-left[
+
+
+```r
+mockdata %&gt;% 
+  tabyl(arm, fu_fct)
+#&gt;        arm Lived Died
+#&gt;     A: IFL    18  410
+#&gt;  F: FOLFOX    99  592
+#&gt;    G: IROX    26  354
+```
+
+] 
+
+--
+
+.pull-right[
+
+
+```r
+mockdata %&gt;% 
+  tabyl(arm, fu_fct) %&gt;% 
+  adorn_totals("row") %&gt;% 
+  adorn_percentages() %&gt;%
+  adorn_pct_formatting() %&gt;%
+  adorn_ns()
+#&gt;        arm       Lived         Died
+#&gt;     A: IFL  4.2%  (18) 95.8%  (410)
+#&gt;  F: FOLFOX 14.3%  (99) 85.7%  (592)
+#&gt;    G: IROX  6.8%  (26) 93.2%  (354)
+#&gt;      Total  9.5% (143) 90.5% (1356)
+```
+
+]
+
+---
+class: middle
+
+.left-column[
+
+&lt;img src="https://raw.githubusercontent.com/rstudio/gt/master/man/figures/logo.svg" width="50%" /&gt;
+
+]
+
+.right-column[
+# the gt package
+
+&lt;https://gt.rstudio.com/&gt;
+]
+
+---
+background-image: url(https://gt.rstudio.com/reference/figures/gt_parts_of_a_table.svg)
+background-size: contain
+
+---
+background-image: url(https://gt.rstudio.com/reference/figures/gt_workflow_diagram.svg)
+background-size: contain
+
+---
+
+.pull-left[
+
+
+```r
+mockdata %&gt;% 
+  tabyl(arm, fu_fct) %&gt;% 
+  gt::gt()
+```
+
+<div id="xbpzgihngm" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#xbpzgihngm .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#xbpzgihngm .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#xbpzgihngm .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#xbpzgihngm .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#xbpzgihngm .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#xbpzgihngm .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#xbpzgihngm .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#xbpzgihngm .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#xbpzgihngm .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#xbpzgihngm .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#xbpzgihngm .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#xbpzgihngm .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#xbpzgihngm .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#xbpzgihngm .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#xbpzgihngm .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#xbpzgihngm .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#xbpzgihngm .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#xbpzgihngm .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#xbpzgihngm .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#xbpzgihngm .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#xbpzgihngm .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#xbpzgihngm .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#xbpzgihngm .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#xbpzgihngm .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#xbpzgihngm .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#xbpzgihngm .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#xbpzgihngm .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#xbpzgihngm .gt_left {
+  text-align: left;
+}
+
+#xbpzgihngm .gt_center {
+  text-align: center;
+}
+
+#xbpzgihngm .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#xbpzgihngm .gt_font_normal {
+  font-weight: normal;
+}
+
+#xbpzgihngm .gt_font_bold {
+  font-weight: bold;
+}
+
+#xbpzgihngm .gt_font_italic {
+  font-style: italic;
+}
+
+#xbpzgihngm .gt_super {
+  font-size: 65%;
+}
+
+#xbpzgihngm .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 65%;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">arm</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Lived</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Died</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_left">A: IFL</td>
+<td class="gt_row gt_right">18</td>
+<td class="gt_row gt_right">410</td></tr>
+    <tr><td class="gt_row gt_left">F: FOLFOX</td>
+<td class="gt_row gt_right">99</td>
+<td class="gt_row gt_right">592</td></tr>
+    <tr><td class="gt_row gt_left">G: IROX</td>
+<td class="gt_row gt_right">26</td>
+<td class="gt_row gt_right">354</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+
+] 
+
+--
+
+.pull-right[
+
+
+```r
+mockdata %&gt;% 
+  tabyl(arm, fu_fct) %&gt;% 
+  adorn_totals("row") %&gt;% 
+  adorn_percentages() %&gt;%
+  adorn_pct_formatting() %&gt;%
+  adorn_ns() %&gt;%
+  gt::gt()
+```
+
+<div id="zlorkypjcu" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#zlorkypjcu .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#zlorkypjcu .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#zlorkypjcu .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#zlorkypjcu .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#zlorkypjcu .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#zlorkypjcu .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#zlorkypjcu .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#zlorkypjcu .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#zlorkypjcu .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#zlorkypjcu .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#zlorkypjcu .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#zlorkypjcu .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#zlorkypjcu .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#zlorkypjcu .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#zlorkypjcu .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#zlorkypjcu .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#zlorkypjcu .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#zlorkypjcu .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zlorkypjcu .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#zlorkypjcu .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zlorkypjcu .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#zlorkypjcu .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#zlorkypjcu .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#zlorkypjcu .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#zlorkypjcu .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#zlorkypjcu .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#zlorkypjcu .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#zlorkypjcu .gt_left {
+  text-align: left;
+}
+
+#zlorkypjcu .gt_center {
+  text-align: center;
+}
+
+#zlorkypjcu .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#zlorkypjcu .gt_font_normal {
+  font-weight: normal;
+}
+
+#zlorkypjcu .gt_font_bold {
+  font-weight: bold;
+}
+
+#zlorkypjcu .gt_font_italic {
+  font-style: italic;
+}
+
+#zlorkypjcu .gt_super {
+  font-size: 65%;
+}
+
+#zlorkypjcu .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 65%;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">arm</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Lived</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Died</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_left">A: IFL</td>
+<td class="gt_row gt_left">4.2%  (18)</td>
+<td class="gt_row gt_left">95.8%  (410)</td></tr>
+    <tr><td class="gt_row gt_left">F: FOLFOX</td>
+<td class="gt_row gt_left">14.3%  (99)</td>
+<td class="gt_row gt_left">85.7%  (592)</td></tr>
+    <tr><td class="gt_row gt_left">G: IROX</td>
+<td class="gt_row gt_left">6.8%  (26)</td>
+<td class="gt_row gt_left">93.2%  (354)</td></tr>
+    <tr><td class="gt_row gt_left">Total</td>
+<td class="gt_row gt_left">9.5% (143)</td>
+<td class="gt_row gt_left">90.5% (1356)</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+
+]
+
+---
+class: middle
+
+.left-column[
+
+![](http://www.danieldsjoberg.com/gtsummary/reference/figures/logo.png)
+]
+
+.right-column[
+# the gtsummary package
+
+&lt;http://www.danieldsjoberg.com/gtsummary/index.html&gt;
+]
+
+---
+class: middle
+
+# A `tbl_summary()`
+
+.left-column[
+
+```r
+library(gtsummary)
+mockdata %&gt;% 
+  select(arm, sex) %&gt;% 
+  tbl_summary(by = arm) %&gt;% 
+  add_p() %&gt;% 
+  add_overall()
+```
+]
+
+.right-column[
+<div id="bmnayfrsqa" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#bmnayfrsqa .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#bmnayfrsqa .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#bmnayfrsqa .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#bmnayfrsqa .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#bmnayfrsqa .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#bmnayfrsqa .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#bmnayfrsqa .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#bmnayfrsqa .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#bmnayfrsqa .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#bmnayfrsqa .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#bmnayfrsqa .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#bmnayfrsqa .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#bmnayfrsqa .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#bmnayfrsqa .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#bmnayfrsqa .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#bmnayfrsqa .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#bmnayfrsqa .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#bmnayfrsqa .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bmnayfrsqa .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#bmnayfrsqa .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bmnayfrsqa .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#bmnayfrsqa .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#bmnayfrsqa .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#bmnayfrsqa .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#bmnayfrsqa .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#bmnayfrsqa .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#bmnayfrsqa .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#bmnayfrsqa .gt_left {
+  text-align: left;
+}
+
+#bmnayfrsqa .gt_center {
+  text-align: center;
+}
+
+#bmnayfrsqa .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#bmnayfrsqa .gt_font_normal {
+  font-weight: normal;
+}
+
+#bmnayfrsqa .gt_font_bold {
+  font-weight: bold;
+}
+
+#bmnayfrsqa .gt_font_italic {
+  font-style: italic;
+}
+
+#bmnayfrsqa .gt_super {
+  font-size: 65%;
+}
+
+#bmnayfrsqa .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 65%;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1"><strong>Characteristic</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Overall</strong>, N = 1,499<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>A: IFL</strong>, N = 428<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>F: FOLFOX</strong>, N = 691<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>G: IROX</strong>, N = 380<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>p-value</strong><sup class="gt_footnote_marks">2</sup></th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_left">sex</td>
+<td class="gt_row gt_center"></td>
+<td class="gt_row gt_center"></td>
+<td class="gt_row gt_center"></td>
+<td class="gt_row gt_center"></td>
+<td class="gt_row gt_center">0.2</td></tr>
+    <tr><td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">Female</td>
+<td class="gt_row gt_center">583 (39%)</td>
+<td class="gt_row gt_center">151 (35%)</td>
+<td class="gt_row gt_center">280 (41%)</td>
+<td class="gt_row gt_center">152 (40%)</td>
+<td class="gt_row gt_center"></td></tr>
+    <tr><td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">Male</td>
+<td class="gt_row gt_center">916 (61%)</td>
+<td class="gt_row gt_center">277 (65%)</td>
+<td class="gt_row gt_center">411 (59%)</td>
+<td class="gt_row gt_center">228 (60%)</td>
+<td class="gt_row gt_center"></td></tr>
+  </tbody>
+  
+  <tfoot>
+    <tr class="gt_footnotes">
+      <td colspan="6">
+        <p class="gt_footnote">
+          <sup class="gt_footnote_marks">
+            <em>1</em>
+          </sup>
+           
+          n (%)
+          <br />
+        </p>
+        <p class="gt_footnote">
+          <sup class="gt_footnote_marks">
+            <em>2</em>
+          </sup>
+           
+          Pearson's Chi-squared test
+          <br />
+        </p>
+      </td>
+    </tr>
+  </tfoot>
+</table>
+</div>
+
+]
+
+---
+class: middle
+
+# A bigger `tbl_summary()`
+
+.left-column[
+
+
+```r
+library(gtsummary)
+mockdata %&gt;% 
+  select(arm, 
+         starts_with("ae")) %&gt;% 
+  tbl_summary(by = arm)  
+```
+]
+
+.right-column[
+<div id="cdtvpdrjfs" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#cdtvpdrjfs .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#cdtvpdrjfs .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#cdtvpdrjfs .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#cdtvpdrjfs .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#cdtvpdrjfs .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#cdtvpdrjfs .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#cdtvpdrjfs .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#cdtvpdrjfs .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#cdtvpdrjfs .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#cdtvpdrjfs .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#cdtvpdrjfs .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#cdtvpdrjfs .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#cdtvpdrjfs .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#cdtvpdrjfs .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#cdtvpdrjfs .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#cdtvpdrjfs .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#cdtvpdrjfs .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#cdtvpdrjfs .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cdtvpdrjfs .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#cdtvpdrjfs .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cdtvpdrjfs .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#cdtvpdrjfs .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#cdtvpdrjfs .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#cdtvpdrjfs .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#cdtvpdrjfs .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#cdtvpdrjfs .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#cdtvpdrjfs .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#cdtvpdrjfs .gt_left {
+  text-align: left;
+}
+
+#cdtvpdrjfs .gt_center {
+  text-align: center;
+}
+
+#cdtvpdrjfs .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#cdtvpdrjfs .gt_font_normal {
+  font-weight: normal;
+}
+
+#cdtvpdrjfs .gt_font_bold {
+  font-weight: bold;
+}
+
+#cdtvpdrjfs .gt_font_italic {
+  font-style: italic;
+}
+
+#cdtvpdrjfs .gt_super {
+  font-size: 65%;
+}
+
+#cdtvpdrjfs .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 65%;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1"><strong>Characteristic</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>A: IFL</strong>, N = 428<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>F: FOLFOX</strong>, N = 691<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>G: IROX</strong>, N = 380<sup class="gt_footnote_marks">1</sup></th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_left">ae_low_wbc</td>
+<td class="gt_row gt_center"></td>
+<td class="gt_row gt_center"></td>
+<td class="gt_row gt_center"></td></tr>
+    <tr><td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">0</td>
+<td class="gt_row gt_center">354 (83%)</td>
+<td class="gt_row gt_center">551 (80%)</td>
+<td class="gt_row gt_center">347 (91%)</td></tr>
+    <tr><td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">1</td>
+<td class="gt_row gt_center">74 (17%)</td>
+<td class="gt_row gt_center">140 (20%)</td>
+<td class="gt_row gt_center">33 (8.7%)</td></tr>
+    <tr><td class="gt_row gt_left">ae_neuropathy</td>
+<td class="gt_row gt_center"></td>
+<td class="gt_row gt_center"></td>
+<td class="gt_row gt_center"></td></tr>
+    <tr><td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">0</td>
+<td class="gt_row gt_center">354 (83%)</td>
+<td class="gt_row gt_center">580 (84%)</td>
+<td class="gt_row gt_center">347 (91%)</td></tr>
+    <tr><td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">1</td>
+<td class="gt_row gt_center">74 (17%)</td>
+<td class="gt_row gt_center">111 (16%)</td>
+<td class="gt_row gt_center">33 (8.7%)</td></tr>
+    <tr><td class="gt_row gt_left">ae_diarrhea</td>
+<td class="gt_row gt_center"></td>
+<td class="gt_row gt_center"></td>
+<td class="gt_row gt_center"></td></tr>
+    <tr><td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">0</td>
+<td class="gt_row gt_center">339 (79%)</td>
+<td class="gt_row gt_center">546 (79%)</td>
+<td class="gt_row gt_center">333 (88%)</td></tr>
+    <tr><td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">1</td>
+<td class="gt_row gt_center">89 (21%)</td>
+<td class="gt_row gt_center">145 (21%)</td>
+<td class="gt_row gt_center">47 (12%)</td></tr>
+    <tr><td class="gt_row gt_left">ae_vomiting</td>
+<td class="gt_row gt_center"></td>
+<td class="gt_row gt_center"></td>
+<td class="gt_row gt_center"></td></tr>
+    <tr><td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">0</td>
+<td class="gt_row gt_center">339 (79%)</td>
+<td class="gt_row gt_center">571 (83%)</td>
+<td class="gt_row gt_center">333 (88%)</td></tr>
+    <tr><td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">1</td>
+<td class="gt_row gt_center">89 (21%)</td>
+<td class="gt_row gt_center">120 (17%)</td>
+<td class="gt_row gt_center">47 (12%)</td></tr>
+    <tr><td class="gt_row gt_left">ae_blood_clot</td>
+<td class="gt_row gt_center"></td>
+<td class="gt_row gt_center"></td>
+<td class="gt_row gt_center"></td></tr>
+    <tr><td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">0</td>
+<td class="gt_row gt_center">411 (96%)</td>
+<td class="gt_row gt_center">658 (95%)</td>
+<td class="gt_row gt_center">365 (96%)</td></tr>
+    <tr><td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">1</td>
+<td class="gt_row gt_center">17 (4.0%)</td>
+<td class="gt_row gt_center">33 (4.8%)</td>
+<td class="gt_row gt_center">15 (3.9%)</td></tr>
+  </tbody>
+  
+  <tfoot>
+    <tr class="gt_footnotes">
+      <td colspan="4">
+        <p class="gt_footnote">
+          <sup class="gt_footnote_marks">
+            <em>1</em>
+          </sup>
+           
+          n (%)
+          <br />
+        </p>
+      </td>
+    </tr>
+  </tfoot>
+</table>
+</div>
+
+]
+
+---
+class: middle, center
+
+# Take-aways
+
+--
+
+✔️ **Document your document:** use YAML to set up meaningful metadata
+
+--
+
+✔️ **Style your document:** use YAML to add options to your chosen output format
+
+--
+
+✔️ **Organize your text:** use markdown headers with `#`
+
+--
+
+✔️ **Organize your code:** use `knitr` chunk labels
+
+--
+
+✔️ **Style your text:** use markdown **bold**, _italics_, &lt;i class="fas fa-list-ul"&gt;&lt;/i&gt; bullets, and &lt;i class="fas fa-list-ol"&gt;&lt;/i&gt; lists
+
+--
+
+✔️ **Style your output:** use `knitr` chunk options
+
+--
+
+🧶 early, 🧶 often
+
+
+
+---
+class: top
+
+# How does R Markdown work?
+
+1. 🤷
+
+1. I press knit, a document appears, and I believe that anything happening in between could be actual magic.
+
+1. `knitr` executes the code and converts `.Rmd` to `.md`; **Pandoc** renders the `.md` file to the output format you want.
+
+---
+class: top
+
+# How *does* R Markdown work?
+
+1. 🤷 (✔️)
+
+1. ["I press knit, a document appears, and I believe that anything happening in between could be actual magic."](https://twitter.com/allison_horst/status/1070323369600442368?s=20) (🧙‍♂️)
+
+1. `knitr` executes the code and converts `.Rmd` to `.md`; **Pandoc** renders the `.md` file to the output format you want. (✔️)
+
+
+
+---
+class: middle, center
+
+&lt;img src="https://raw.githubusercontent.com/rstudio/hex-stickers/master/PNG/rmarkdown.png" width="25%" style="display: block; margin: auto;" /&gt;
+
+
+&gt; "In a nutshell, R Markdown stands on the shoulders of `knitr` and **Pandoc**.
+
+--
+
+&gt; The former executes the computer code embedded in Markdown, and converts R Markdown to Markdown.
+
+--
+
+&gt; The latter renders Markdown to the output format you want (such as PDF, HTML, Word, and so on)."
+
+--
+
+&gt; &amp;mdash; [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/)
+
+
+---
+
+# Check-in
+
+
+Which of the following is **NOT** a part of R Markdown basic anatomy?
+
+1. Metadata
+
+1. Text
+
+1. Data
+
+1. Code
+
+1. Output
+
+
+---
+
+# Mad libs check-in
+
+```markdown
+ ___________ is written at the top between `---` in ________.
+    noun                                             syntax
+                                                     
+  ______ is written in Markdown.
+   noun         
+  
+  ______ is written in R (or other programming language).
+   noun   
+   
+  The ______ package evaluates the code and produces the ______.
+       noun                                               noun
+```
+
+
+---
+
+# Mad libs check-in
+
+```markdown
+ Metadata is written at the top between `---` in YAML.
+   (noun)                                      (syntax)
+                                                     
+  Text is written in Markdown.
+ (noun)         
+  
+  Code is written in R (or other programming language).
+ (noun)   
+   
+  The knitr package evaluates the code and produces the output.
+     (noun)                                             (noun) 
+```
+
+
+
+
+
+
+---
+
+# Projects
+
+
+---
+class: center, middle
+
+# R projects
+
+&lt;img src="images/rproj.png" width="171" /&gt;
+
+
+---
+class: middle, center
+
+.pull-left[
+# &lt;i class="fas fa-mouse-pointer"&gt;&lt;/i&gt;
+
+_File &gt; New Project..._
+&lt;img src="images/rstudio-new.png" width="2056" /&gt;
+]
+--
+
+.pull-right[
+# &lt;i class="fas fa-mouse-pointer"&gt;&lt;/i&gt;
+
+Pick one
+&lt;img src="images/rstudio-newproj.png" width="1773" /&gt;
+]
+
+---
+class: middle, center
+
+.pull-left[
+# &lt;i class="fas fa-mouse-pointer"&gt;&lt;/i&gt;
+
+_File &gt; New File &gt; R Markdown..._
+&lt;img src="images/rstudio-newfile.png" width="2037" /&gt;
+]
+--
+
+.pull-right[
+# &lt;i class="fas fa-mouse-pointer"&gt;&lt;/i&gt;
+
+Fill in, can leave as HTML
+&lt;img src="images/rstudio-newrmd.png" width="1768" /&gt;
+]
+
+---
+class: middle, center
+
+.pull-left[
+# &lt;i class="fas fa-trash-alt"&gt;&lt;/i&gt;
+
+![](images/rstudio-freshrmd.png)
+]
+
+--
+
+.pull-right[
+# &lt;i class="fas fa-save"&gt;&lt;/i&gt;
+
+![](images/rstudio-blankrmd.png)
+]
+
+
+---
+class: middle
+
+# Working with data
+
+.pull-left[
+
+### &lt;i class="far fa-thumbs-down"&gt;&lt;/i&gt;
+
+
+```r
+"~/mm/nope.csv"
+setwd("/haha/good/luck/")
+setwd('c:\iamyournightmare\!')
+setwd("C:\user\oh\no")
+setwd("path/that/only/works/on/my/machine")
+```
+
+### &lt;i class="far fa-thumbs-up"&gt;&lt;/i&gt;
+
+
+```r
+mockdata &lt;- read_csv(
+  here::here("data/mockdata.csv")
+  )
+```
+
+]
+
+.pull-right[
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="images/horst_here.png" alt="Art by Allison Horst" width="90%" /&gt;
+&lt;p class="caption"&gt;Art by Allison Horst&lt;/p&gt;
+&lt;/div&gt;
+]
+
+https://whattheyforgot.org/project-oriented-workflow.html#setwd
+
+---
+
+
+# Extension formats
+
+---
+class: middle, center
+
+# Dashboards
+
+&lt;a href="https://jenthompson.me/examples/progressdash.html" target="_blank"&gt;&lt;img src="https://jenthompson.me/images/flexdash_example.png" width="50%" /&gt;&lt;/a&gt;
+
+https://jenthompson.me/examples/progressdash.html
+
+https://jenthompson.me/2018/02/09/flexdashboards-monitoring/
+
+---
+class: middle, center
+
+&lt;https://bookdown.org/yihui/bookdown/&gt;
+
+&lt;iframe src="https://bookdown.org/yihui/bookdown/" height="600" width="1200" frameborder="0"&gt;&lt;/iframe&gt; 
+
+---
+class: center, middle
+
+
+&lt;https://bookdown.org/yihui/blogdown/&gt;
+
+&lt;iframe src="https://academic-demo.netlify.com/" height="600" width="1200" frameborder="0"&gt;&lt;/iframe&gt; 
+
+---
+class: middle, center, inverse
+
+&lt;span class="fa-stack fa-4x"&gt;
+  &lt;i class="fa fa-circle fa-stack-2x" style="color: #fff;"&gt;&lt;/i&gt;
+  &lt;strong class="fa-stack-1x" style="color:#2f5275;"&gt;!&lt;/strong&gt;
+&lt;/span&gt; 
+
+
+# Cheatsheets!
+
+---
+class: middle
+
+.left-column[
+
+# 📌
+
+]
+
+.right-column[
+
+_Help &gt; Cheatsheets &gt; RStudio IDE_
+
+&lt;a href="https://www.rstudio.com/resources/cheatsheets/#ide" target="_blank"&gt;&lt;img src="https://d33wubrfki0l68.cloudfront.net/0dc0efccfaf638de8be4ce43e2bab8a91541d3d2/c4fdc/wp-content/uploads/2018/08/rstudio-ide.png" width="50%" /&gt;&lt;/a&gt;
+]
+
+.footnote[https://www.rstudio.com/resources/cheatsheets/#ide]
+
+---
+class: middle
+
+.left-column[
+# 📌
+]
+
+.right-column[
+_Help &gt; Cheatsheets &gt; R Markdown Cheat Sheet_
+
+&lt;a href="https://www.rstudio.com/resources/cheatsheets/#rmarkdown" target="_blank"&gt;&lt;img src="https://d33wubrfki0l68.cloudfront.net/65dffd1bdcaa0025006262164d98e8068e8b4387/c3895/wp-content/uploads/2018/08/rmarkdown-2.0.png" width="50%" /&gt;&lt;/a&gt;
+]
+
+.footnote[https://www.rstudio.com/resources/cheatsheets/#rmarkdown]
+
+---
+class: middle
+
+.left-column[
+# 📌
+]
+
+.right-column[
+_Help &gt; Cheatsheets &gt; R Markdown Reference Guide_
+
+&lt;a href="https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf" target="_blank"&gt;&lt;img src="https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference-guide.png" width="40%" /&gt;&lt;/a&gt;
+
+]
+
+.footnote[https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf]
+
+---
+class: middle, center, inverse
+
+&lt;span class="fa-stack fa-4x"&gt;
+  &lt;i class="fa fa-circle fa-stack-2x" style="color: #fff;"&gt;&lt;/i&gt;
+  &lt;strong class="fa-stack-1x" style="color:#2f5275;"&gt;!&lt;/strong&gt;
+&lt;/span&gt; 
+
+
+# Book!
+
+---
+class: middle
+
+.left-column[
+# 📖
+]
+
+.right-column[
+
+&lt;a href="https://bookdown.org/yihui/rmarkdown/" target="_blank"&gt;&lt;img src="https://bookdown.org/yihui/rmarkdown/images/cover.png" width="40%" /&gt;&lt;/a&gt;
+]
+
+.footnote[https://bookdown.org/yihui/rmarkdown/]
+
+
+---
+class: middle, center, inverse
+
+&lt;span class="fa-stack fa-4x"&gt;
+  &lt;i class="fa fa-circle fa-stack-2x" style="color: #fff;"&gt;&lt;/i&gt;
+  &lt;strong class="fa-stack-1x" style="color:#2f5275;"&gt;!&lt;/strong&gt;
+&lt;/span&gt; 
+
+
+# Websites!
+
+---
+class: middle
+
+.left-column[
+# 🔗
+]
+
+.right-column[
+
+&lt;a href="https://rmarkdown.rstudio.com/" target="_blank"&gt;&lt;img src="images/rmarkdown-site.png" width="80%" /&gt;&lt;/a&gt;
+]
+
+.footnote[https://rmarkdown.rstudio.com/]
+
+---
+class: middle
+
+.left-column[
+# 🔗
+]
+
+.right-column[
+
+&lt;a href="https://rmarkdown.rstudio.com/docs/" target="_blank"&gt;&lt;img src="images/rmarkdowndocs-site.png" width="80%" /&gt;&lt;/a&gt;
+]
+
+.footnote[https://rmarkdown.rstudio.com/docs/]
+
+---
+class: middle
+
+.left-column[
+# 🎯
+]
+
+.right-column[
+
+&lt;a href="https://community.rstudio.com/c/R-Markdown" target="_blank"&gt;&lt;img src="images/rmarkdowncommunity-site.png" width="80%" /&gt;&lt;/a&gt;
+]
+
+.footnote[https://community.rstudio.com/c/R-Markdown]
+
+---
+class: middle
+
+.left-column[
+# 🤖
+]
+
+.right-column[
+
+&lt;a href="https://rmarkdown.rstudio.com/lesson-6.html" target="_blank"&gt;&lt;img src="https://raw.githubusercontent.com/rstudio/rmarkdown/gh-pages/lesson-images/params-1-hawaii.png" width="80%" /&gt;&lt;/a&gt;
+]
+
+.footnote[https://bookdown.org/yihui/rmarkdown/parameterized-reports.html,&lt;br&gt;
+https://rmarkdown.rstudio.com/lesson-6.html]
+
+
+---
+class: inverse, middle, center
+
+# Thank you!
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "atelier-forest-light",
+"highlightLanguage": ["r", "yaml", "markdown"],
+"slideNumberFormat": "",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
