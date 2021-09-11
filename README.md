@@ -2,7 +2,7 @@
 # Diplomado en gestión de datos UT
 
 - Docente: Orlando Joaqui Barandica email: orlando.joaqui@correounivalle.edu.co
-## www.joaquibarandica.com
+## [www.joaquibarandica.com](https://www.joaquibarandica.com/)
 
 ![](https://upload.wikimedia.org/wikipedia/commons/9/95/Universidad_del_Tolima_logo.jpg)
 
