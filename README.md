@@ -41,6 +41,9 @@ Tendremos 8 sesiones de clase. La idea principal es abarcar por cada fin de sema
 
 ### [5. Clase RMarkdown](https://juniorjb5.github.io/DiplomadoUT/5_Rmarkdown/index.html#1)
 
+- Libro guía: 📕 [R Markdown: The Definite Guide](https://bookdown.org/yihui/rmarkdown/)
+
+
 #### ✍ [Link Carpeta de trabajos](https://drive.google.com/drive/folders/1aUpZD355rcOCUBWVd8yRQ0tRWbWNN1nv?usp=sharing)
 
 #### 📺 [Link Carpeta de grabaciones](https://drive.google.com/drive/folders/1sFce8vfmJTcgl6u7GtGCGI6i-Da4NdUj?usp=sharing)
