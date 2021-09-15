@@ -43,6 +43,7 @@ Tendremos 8 sesiones de clase. La idea principal es abarcar por cada fin de sema
 
 - Libro guía: 📕 [R Markdown: The Definite Guide](https://bookdown.org/yihui/rmarkdown/)
 
+### [6. Temas en Xaringan](https://github.com/yihui/xaringan/wiki/Themes)
 
 #### ✍ [Link Carpeta de trabajos](https://drive.google.com/drive/folders/1aUpZD355rcOCUBWVd8yRQ0tRWbWNN1nv?usp=sharing)
 
